@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">mobilne</string>
+    <string name="company">Company</string>
+    <string name="model">Model</string>
+    <string name="number_of_cores">Number of cores</string>
+    <string name="number_of_threads">Number of threads</string>
+    <string name="clock_speed">Clock speed</string>
 </resources>

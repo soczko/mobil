@@ -1,0 +1,13 @@
+Kacper Soæko, 279070
+
+Aplikacja wyœwietlaj¹ca listê procesorów oraz ich szczegó³y. Aplikacja umo¿liwia tak¿e dodanie nowego procesora oraz usuniêcie istniej¹cego.
+Aplikacja zapisuje listê procesorów do pliku tekstowego.
+Przyk³adowy format dodania procesora:
+Intel i7-7700K;4,8,4.2
+
+Producent Model;Liczba rdzeni, Liczba w¹tków, Czêstotliwoœæ bazowa
+
+Usuwanie odbywa siê przez d³u¿sze przytymanie palca na danej pozycji na liœcie. Po chwili obiekt znika. Usuniêty obiekt nie zostanie ponownie zapisany do pliku.
+Wyœwietlanie widoku ze szczegó³ami nastêpujê poprzez kikniêcie w dan¹ pozycjê na liœcie. Powróciæ do listy mo¿na przez wbudowany w telefon przycisk powrotu.
+
+Link do repozytorium z projektem: https://github.com/soczko/mobil.git

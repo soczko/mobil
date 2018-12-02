@@ -2,21 +2,18 @@ package com.example.kacper.mobilne;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends Activity {
     ArrayList<String> items;
@@ -49,6 +46,7 @@ public class MainActivity extends Activity {
                     public boolean onItemLongClick(AdapterView<?> adapter,
                                                    View item, int pos, long id) {
                         items.remove(pos);
+                        details.remove(pos);
                         itemsAdapter.notifyDataSetChanged();
                         writeItems();
                         return true;
@@ -63,14 +61,16 @@ public class MainActivity extends Activity {
                     public void onItemClick(AdapterView<?> adapter,
                                             View item, int pos, long id) {
 
-                        String details = ((TextView) item).getText().toString();
                         System.out.println("MAIN");
-                        System.out.println(details);
+                        System.out.println(items.get(pos));
+                        System.out.println(details.get(pos));
+
                         // Launching new Activity on selecting single List Item
                         Intent i = new Intent(getApplicationContext(), Details.class);
                         // sending data to new activity
-                        i.putExtra("details", details);
-                        //startActivity(i);
+                        i.putExtra("items", items.get(pos));
+                        i.putExtra("details", details.get(pos));
+                        startActivity(i);
                     }
                 }
         );
@@ -84,8 +84,10 @@ public class MainActivity extends Activity {
         {
             String[] tab = itemText.split(";");
             itemText = tab[0];
-            //items.add(tab[0]);
-            details.add(tab[1]);
+            if(tab[1] == null) {
+                details.add("");
+            }
+            else details.add(tab[1]);
             itemsAdapter.add(itemText);
             etNewItem.setText("");
             writeItems();
@@ -94,7 +96,7 @@ public class MainActivity extends Activity {
 
     private void readItems() {
         File filesDir = getFilesDir();
-        File todoFile = new File(filesDir, "processors.txt");
+        File todoFile = new File(filesDir, "procesory.txt");
         try {
             items = new ArrayList<String>(FileUtils.readLines(todoFile));
             for(int i =0; i<items.size(); i++)
@@ -116,16 +118,20 @@ public class MainActivity extends Activity {
 
     private void writeItems() {
         File filesDir = getFilesDir();
-        File todoFile = new File(filesDir, "processors.txt");
+        File todoFile = new File(filesDir, "procesory.txt");
+        writeToFile.clear();
         try {
-            for(int i= 0; i<items.size(); i++)
+            for(int i= 0; i<itemsAdapter.getCount(); i++)
             {
+
                 String line = items.get(i)+";"+details.get(i);
                 writeToFile.add(line);
+                //FileUtils.writeLines(todoFile, writeToFile);
             }
             FileUtils.writeLines(todoFile, writeToFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 }
