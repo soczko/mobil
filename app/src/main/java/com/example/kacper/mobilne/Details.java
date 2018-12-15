@@ -26,15 +26,16 @@ public class Details extends AppCompatActivity{
 
         Intent i = getIntent();
         // getting attached intent data
-        String base = i.getStringExtra("items");
-        String details = i.getStringExtra("details");
-        String[] tab1 = base.split(" ");
-        String[] tab2 = details.split(",");
-        company.setText(tab1[0]);
-        model.setText(tab1[1]);
-        cores.setText(tab2[0]);
-        threads.setText(tab2[1]);
-        clock.setText(tab2[2] + "GHz");
+        String oCompany = i.getStringExtra("company");
+        String oModel = i.getStringExtra("model");
+        String oCores = i.getStringExtra("cores");
+        String oThreads = i.getStringExtra("threads");
+        String oClock = i.getStringExtra("clock");
+        company.setText(oCompany);
+        model.setText(oModel);
+        cores.setText(oCores);
+        threads.setText(oThreads);
+        clock.setText(oClock + "GHz");
 
     }
 }
