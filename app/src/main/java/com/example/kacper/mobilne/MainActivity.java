@@ -18,6 +18,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -121,7 +122,7 @@ public class MainActivity extends Activity {
         }
     }
 
-
+    /*
     private void readItems() {
         File filesDir = getFilesDir();
         File todoFile = new File(filesDir, "list.txt");
@@ -149,6 +150,43 @@ public class MainActivity extends Activity {
         } catch (IOException e) {
             items = new ArrayList<String>();
         }
+    }
+    */
+    private void readItems(){
+        String text = "";
+        try{
+            InputStream is = getAssets().open("lista.txt");
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            text = new String(buffer);
+            String[] lines = text.split("\n");
+            for(int i =0; i<lines.length; i++)
+            {
+                if(lines[i].contains(";")) {
+                    String line = lines[i];
+                    String[] tab = line.split(";");
+                    if(tab.length == 5)
+                    {
+                        Processor proc = new Processor();
+                        items.add(tab[0]+" "+tab[1]);
+                        proc.setCompany(tab[0]);
+                        proc.setModel(tab[1]);
+                        proc.setCores(tab[2]);
+                        proc.setThreads(tab[3]);
+                        proc.setClock(tab[4]);
+                        processorsList.add(proc);
+
+                    }
+                }
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 

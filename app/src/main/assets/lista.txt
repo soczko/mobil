@@ -1,0 +1,20 @@
+﻿Intel;i7-8700K;6;12;3.7
+Intel;i7-8700;6;12;3.2
+Intel;i5-8600K;6;6;3.6
+Intel;i5-8400;6;6;2.8
+Intel;3-8100;4;4;3.6
+AMD;Ryzen7 2700X;8;16;3.7
+AMD;Ryzen7 2700;8;16;3.2
+AMD;Ryzen5 2600X; 6;12;3.6
+AMD;Ryzen5 2500X;4;8;3.6
+AMD;Ryzen3 2300X;4;4;3.5
+Intel;i9-7980XE;18;36;2.6
+Intel;i7-7700K;4;8;4.2
+Intel;i5-7500;4;4;3.4
+Intel;i3-7350K;2;4;4.2
+Intel;G4620;2;4;3.7
+AMD;Ryzen7 1800X;8;16;3.6
+AMD;Ryzen7 1700;8;16;3.0
+AMD;Ryzen5 1600;6;12;3.2
+AMD;Ryzen5 1400;4;8;3.2
+AMD;Ryzen3 1200;4;4;3.1
