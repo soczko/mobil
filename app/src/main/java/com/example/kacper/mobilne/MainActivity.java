@@ -22,7 +22,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class MainActivity extends Activity {
-    Processor proc = new Processor();
     ArrayList<Processor> processorsList;
     ArrayList<String> items;
     ArrayList<String> details;
@@ -36,10 +35,10 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         lvItems = (ListView) findViewById(R.id.lvItems);
-        proc = new Processor();
+        //proc = new Processor();
         processorsList = new ArrayList<>();
         items = new ArrayList<>();
-        details = new ArrayList<>();
+        //details = new ArrayList<>();
         writeToFile = new ArrayList<>();
         readItems();
         itemsAdapter = new ArrayAdapter<String>(this,
@@ -73,9 +72,13 @@ public class MainActivity extends Activity {
                                             View item, int pos, long id) {
 
                         System.out.println("MAIN");
-                        System.out.println(items.get(pos));
+                        //System.out.println(items.get(pos));
                         //System.out.println(details.get(pos));
-                        System.out.println(processorsList.get(pos));
+                        //System.out.println(processorsList.get(pos).getModel());
+                        for(int j = 0; j< processorsList.size(); j++)
+                        {
+                            System.out.println(processorsList.get(j).getModel());
+                        }
 
                         // Launching new Activity on selecting single List Item
                         Intent i = new Intent(getApplicationContext(), Details.class);
@@ -103,13 +106,14 @@ public class MainActivity extends Activity {
             String[] tab = itemText.split(";");
             if(tab.length == 5)
             {
+                Processor proc = new Processor();
                 proc.setCompany(tab[0]);
                 proc.setModel(tab[1]);
                 proc.setCores(tab[2]);
                 proc.setThreads(tab[3]);
                 proc.setClock(tab[4]);
                 processorsList.add(proc);
-                itemsAdapter.add(tab[0]+" "+tab[1]);
+                items.add(tab[0]+" "+tab[1]);
                 etNewItem.setText("");
                 writeItems();
 
@@ -130,6 +134,7 @@ public class MainActivity extends Activity {
                     String[] tab = line.split(";");
                     if(tab.length == 5)
                     {
+                        Processor proc = new Processor();
                         items.set(i, tab[0]+" "+tab[1]);
                         proc.setCompany(tab[0]);
                         proc.setModel(tab[1]);
@@ -154,6 +159,7 @@ public class MainActivity extends Activity {
         try {
             for(int i= 0; i<itemsAdapter.getCount(); i++)
             {
+                Processor proc = new Processor();
                 proc = processorsList.get(i);
                 //String line = items.get(i)+";"+details.get(i);
                 writeToFile.add(proc.getCompany()+";"+proc.getModel()+";"+proc.getCores()+";"+proc.getThreads()+";"+proc.getClock());

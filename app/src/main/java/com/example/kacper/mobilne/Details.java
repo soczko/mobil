@@ -3,6 +3,7 @@ package com.example.kacper.mobilne;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -36,6 +37,16 @@ public class Details extends AppCompatActivity{
         cores.setText(oCores);
         threads.setText(oThreads);
         clock.setText(oClock + "GHz");
+
+        if( oCompany.equalsIgnoreCase("intel")) {
+            ImageView myImageView = (ImageView) findViewById(R.id.my_image_view);
+            myImageView.setImageResource(R.drawable.intel);
+        }
+        else{
+            ImageView myImageView = (ImageView) findViewById(R.id.my_image_view);
+            myImageView.setImageResource(R.drawable.amd);
+        }
+
 
     }
 }
